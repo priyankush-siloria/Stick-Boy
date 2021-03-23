@@ -1,6 +1,9 @@
 from django.contrib import admin
-from core_app.models import ForgotPasswordLinkModel, TasksModel, TaskSchedulesModel
+from core_app.models import ForgotPasswordLinkModel, TaskSchedulesModel
 
 admin.site.register(ForgotPasswordLinkModel)
-admin.site.register(TasksModel)
-admin.site.register(TaskSchedulesModel)
+
+
+@admin.register(TaskSchedulesModel)
+class TaskSchedulesAdmin(admin.ModelAdmin):
+    list_display = ['id', 'assigned_by', 'assigned_to', 'description', 'date', 'start_time', 'end_time', 'is_delete']
